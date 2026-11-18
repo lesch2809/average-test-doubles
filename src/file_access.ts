@@ -1,7 +1,8 @@
-export class FileAccess {
+import { NumberProvider } from "./numberProvider.ts";
+export class FileAccess implements NumberProvider {
   constructor(private path: string) {}
 
-  public async readNumbers() {
+  public async readNumbers(): Promise<Array<number>> {
     const numbers: Array<number> = [];
     const content: string = await Deno.readTextFile(this.path);
     const lines: Array<string> = content.split("\n");
